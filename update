@@ -2,18 +2,18 @@
 
 # STOP SERVER
 # -----------
-/root/stationeers_servers/stop
+#/root/stationeers_servers/stop
 
 
 # BACKUP SERVER
 # -------------
-/root/stationeers_servers/backup
+#/root/stationeers_servers/backup
 
 
 # UPDATE SERVERS
 # --------------
-/etc/steam/steamcmd.sh \
-	+login anonymous \
+~/Steam/steamcmd.sh \
+ +login anonymous \
 	+app_update 600760 validate \
 	+quit
 
@@ -21,12 +21,12 @@
 # COPY MINING MOD
 # ---------------
 
-rm -f /root/Steam/steamapps/common/Stationeers\ Dedicated\ Server/rocketstation_DedicatedServer_Data/StreamingAssets/Data/mineables.xml
-cp /root/stationeers_servers/mineables.xml /root/Steam/steamapps/common/Stationeers\ Dedicated\ Server/rocketstation_DedicatedServer_Data/StreamingAssets/Data/
-cat /root/Steam/steamapps/common/Stationeers\ Dedicated\ Server/rocketstation_DedicatedServer_Data/StreamingAssets/Data/mineables.xml | grep MinDropQuantity
+#rm -f /root/Steam/steamapps/common/Stationeers\ Dedicated\ Server/rocketstation_DedicatedServer_Data/StreamingAssets/Data/mineables.xml
+#cp /root/stationeers_servers/mineables.xml /root/Steam/steamapps/common/Stationeers\ Dedicated\ Server/rocketstation_DedicatedServer_Data/StreamingAssets/Data/
+#cat /root/Steam/steamapps/common/Stationeers\ Dedicated\ Server/rocketstation_DedicatedServer_Data/StreamingAssets/Data/mineables.xml | grep MinDropQuantity
 
 
 # START SERVER
 # ------------
-echo
-/root/stationeers_servers/start
+#echo
+#/root/stationeers_servers/start

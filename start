@@ -2,15 +2,17 @@
 
 # VARIABLES
 # ---------
-LOGINPWD=$(cat /root/stationeers_servers/serversettings | grep password: | awk '{ print $2 }')
-WORLDTYPE=$(cat /root/stationeers_servers/serversettings | grep worldtype: | awk '{ print $2 }')
-WORLDNAME=$(cat /root/stationeers_servers/serversettings | grep worldname: | awk '{ print $2 }')
+NAME=$(cat ~/Steam/st600760/settings | grep name: | awk '{ print $2 }')
+TYPE=$(cat ~/Steam/st600760/settings | grep type: | awk '{ print $2 }')
+PASWD=$(cat ~/Steam/st600760/settings | grep password: | awk '{ print $2 }')
+SERVN=$(cat ~/Steam/st600760/settings | grep servername: | awk '{ print $2 }')
 
 echo "------------------------------------------"
-echo 
-echo Password: $LOGINPWD
-echo Worldtype: $WORLDTYPE
-echo Worldname: $WORLDNAME
+echo
+echo "Name: $NAME"
+echo "Type $TYPE"
+echo "Password: $PASWD"
+echo "Servername: $SERVN"
 echo
 echo "------------------------------------------"
 
@@ -20,12 +22,12 @@ echo "------------------------------------------"
 	-autostart \
 	-batchmode \
 	-nographics \
-	-password=$LOGINPWD \
+	-password=$PASWD \
 	-autosaveinterval=300 \
 	-clearallinterval=65535 \
-	-loadworld=$WORLDNAME \
-	-worldtype=$WORLDTYPE \
-	-worldname=$WORLDNAME \
-	-servername=$WORLDNAME \
-	-basedirectory=/etc/steam/stationeers/ \
+	-loadworld=$NAME \
+	-worldtype=$TYPE \
+	-worldname=$NAME \
+	-servername=$SERVN \
+	-basedirectory=~/Steam/ \
 	&
