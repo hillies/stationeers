@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "$(date +%d%m%H%M%S)" > /etc/steam/stationeers/saves/$(cat /root/stationeers_servers/serversettings | grep worldname: | awk '{ print $2 }')/worldbackup$(date +%d%m%H%M%S).txt
+tar -cf /root/stationeers_servers/backups/backup$(date +%d%m%H%M%S).tar -P /etc/steam/stationeers/saves/$(cat /root/stationeers_servers/serversettings | grep worldname: | awk '{ print $2 }')/world*
