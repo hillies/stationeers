@@ -1,0 +1,18 @@
+#!/bin/bash
+
+read -p "Name (Name on server and Loadname): " NAME
+echo "name: $SERVN" >> ~/Steam/st600760/settings
+
+read -p "Worldtype (Mars, Moon or Space): " TYPE
+echo "type: $SERVN" > ~/Steam/st600760/settings
+
+read -p "Password (Server login password): " PASWD
+echo "password: $SERVN" > ~/Steam/st600760/settings
+
+read -p "Servername (Server name ingame): " SERVN
+echo "servername: $SERVN" > ~/Steam/st600760/settings
+
+#servername:
+#worldname: MarsZA02
+#worldtype: Mars
+#password: Super.007

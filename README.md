@@ -11,5 +11,8 @@ Stationeer(600760) server on Fedora 27
 #### Step 3: Create steam directory
 `mkdir ~/Steam && cd ~/Steam`
 
-#### Step 4: Download steamcmd and extract 
+#### Step 4: Download steamcmd and extract
 `curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -`
+
+#### Step 5: Download scripts from github
+git clone https://github.com/hillies/st600760.git
