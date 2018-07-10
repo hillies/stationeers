@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# VARIABLES
+# ---------
+LOGINPWD=$(cat /root/stationeers_servers/serversettings | grep password: | awk '{ print $2 }')
+WORLDTYPE=$(cat /root/stationeers_servers/serversettings | grep worldtype: | awk '{ print $2 }')
+WORLDNAME=$(cat /root/stationeers_servers/serversettings | grep worldname: | awk '{ print $2 }')
+
+echo "------------------------------------------"
+echo 
+echo Password: $LOGINPWD
+echo Worldtype: $WORLDTYPE
+echo Worldname: $WORLDNAME
+echo
+echo "------------------------------------------"
+
+# COMMAND
+# -------
+/root/Steam/steamapps/common/Stationeers\ Dedicated\ Server/rocketstation_DedicatedServer.x86_64 \
+	-autostart \
+	-batchmode \
+	-nographics \
+	-password=$LOGINPWD \
+	-autosaveinterval=300 \
+	-clearallinterval=65535 \
+	-loadworld=$WORLDNAME \
+	-worldtype=$WORLDTYPE \
+	-worldname=$WORLDNAME \
+	-servername=$WORLDNAME \
+	-basedirectory=/etc/steam/stationeers/ \
+	&

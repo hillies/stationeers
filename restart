@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# STOP SERVER
+# -----------
+/root/stationeers_servers/stop
+
+# START SERVER
+# ------------
+/root/stationeers_servers/start
+
+
