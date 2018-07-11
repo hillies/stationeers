@@ -75,10 +75,10 @@
 
 ## Additional notes
 
-1: Running `~/Steam/st600760/create` will create a new file `~/Steam/st600760/settings` with your configurations, running `~/Steam/st600760/create` again will overwright `~/Steam/st600760/settings` configurations file
-2: Everytime you start/restart/update your server it will read the in configurations in `~/Steam/st600760/settings`
-3: This supports standard and beta branch
-4: Working on a backup feature to backup save before doing a update
-5: Working on mod support, for now you'll have to manually add mods.
+#### 1: Running `~/Steam/st600760/create` will create a new file `~/Steam/st600760/settings` with your configurations, running `~/Steam/st600760/create` again will overwright `~/Steam/st600760/settings` configurations file
+#### 2: Everytime you start/restart/update your server it will read the in configurations in `~/Steam/st600760/settings`
+#### 3: This supports standard and beta branch
+#### 4: Working on a backup feature to backup save before doing a update
+#### 5: Working on mod support, for now you'll have to manually add mods.
 
 If you have any questions or suggestions please feel free to contact me on Discord (hillies#9377).
