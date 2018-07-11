@@ -1,0 +1,5 @@
+
+#!/bin/bash
+
+rm -Rf ~/Steam/st600760 && git clone https://github.com/hillies/st600760.git
+
