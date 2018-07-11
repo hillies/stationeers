@@ -18,7 +18,7 @@ echo "------------------------------------------"
 
 # COMMAND
 # -------
-/root/Steam/steamapps/common/Stationeers\ Dedicated\ Server/rocketstation_DedicatedServer.x86_64 \
+~/Steam/steamapps/common/Stationeers\ Dedicated\ Server/rocketstation_DedicatedServer.x86_64 \
 	-autostart \
 	-batchmode \
 	-nographics \
@@ -30,4 +30,5 @@ echo "------------------------------------------"
 	-worldname=$NAME \
 	-servername=$SERVN \
 	-basedirectory=~/Steam/ \
-	&
+	& \
+	>> /dev/null 2>&1
