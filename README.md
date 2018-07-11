@@ -2,9 +2,9 @@
 
 ## Stationeer(600760) 
 ###### OS: Fedora 27 Server
-####### Last Update: 11 July 2018
-####### Managed by: Hillies
-####### Discord Username: hillies#9377 
+###### Last Update: 11 July 2018
+###### Managed by: Hillies
+###### Discord Username: hillies#9377 
 
 
 
