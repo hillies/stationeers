@@ -30,5 +30,4 @@ echo "------------------------------------------"
 	-worldname=$NAME \
 	-servername=$SERVN \
 	-basedirectory=~/Steam/ \
-	& \
-	>> /dev/null 2>&1
+	&
