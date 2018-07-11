@@ -37,7 +37,7 @@ then
         -worldtype=$WORLDTYPE \
         -worldname=$WORLDNAME \
         -servername=$SERVERNAME \
-        -basedirectory=~/Steam/ \
+        -basedirectory=server/ \
         &
 elif [ $SECURE = y ]
 then
@@ -62,7 +62,7 @@ then
         -worldtype=$WORLDTYPE \
         -worldname=$WORLDNAME \
         -servername=$SERVERNAME \
-        -basedirectory=~/Steam/ \
+        -basedirectory=server/ \
         &
 elif [ $SECURE = no ]
 then
@@ -85,7 +85,7 @@ then
         -worldtype=$WORLDTYPE \
         -worldname=$WORLDNAME \
         -servername=$SERVERNAME \
-        -basedirectory=~/Steam/ \
+        -basedirectory=server/ \
         &
 elif [ $SECURE = n ]
 then
@@ -108,7 +108,7 @@ then
         -worldtype=$WORLDTYPE \
         -worldname=$WORLDNAME \
         -servername=$SERVERNAME \
-        -basedirectory=~/Steam/ \
+        -basedirectory=server/ \
         &
 else
         echo " NO SETTINGS"
