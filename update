@@ -2,21 +2,31 @@
 
 # STOP SERVER
 # -----------
-#/root/stationeers_servers/stop
+~/Steam/st600760/stop >> /dev/null 2>&1
 
 
 # BACKUP SERVER
 # -------------
-#/root/stationeers_servers/backup
+#~/Steam/st600760/backup
 
 
 # UPDATE SERVERS
 # --------------
-~/Steam/steamcmd.sh \
- +login anonymous \
-	+app_update 600760 validate \
+BETA=$(cat ~/Steam/st600760/settings | grep beta: | awk '{ print $2 }')
+if [ $BETA = yes ]
+then
+	echo "BETA"
+	~/Steam/steamcmd.sh \
+ 	+login anonymous \
+	+app_update 600760 -beta beta validate \
 	+quit
-
+else
+	echo "STANDARD"
+        ~/Steam/steamcmd.sh \
+        +login anonymous \
+        +app_update 600760 validate \
+        +quit
+fi
 
 # COPY MINING MOD
 # ---------------
@@ -29,4 +39,4 @@
 # START SERVER
 # ------------
 #echo
-#/root/stationeers_servers/start
+~/Steam/st600760/start

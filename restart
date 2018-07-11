@@ -2,10 +2,10 @@
 
 # STOP SERVER
 # -----------
-/root/stationeers_servers/stop
+~/Steam/st600760/stop
 
 # START SERVER
 # ------------
-/root/stationeers_servers/start
+~/Steam/st600760/start
 
 

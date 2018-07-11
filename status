@@ -1,6 +1,16 @@
 #!/bin/bash
 
-echo "Worlname: 	$(cat /root/stationeers_servers/serversettings | grep worldname: | awk '{ print $2 }')"
-echo "PID: 		$(/usr/bin/ps aux | grep -e $(cat /root/stationeers_servers/serversettings | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $2 }')"
+SSETTINGS=$(cat ~/Steam/st600760/settings)
+SRUNPID=$(/usr/bin/ps auxww | grep -e $(cat ~/Steam/st600760/settings | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $2 }')
+SALLPID=$(/usr/bin/ps auxww | grep -e rocketstation_De | grep -v grep | awk '{ print $2 }')
 
-#
+	echo "---------------------------------------"
+	echo "SERVER INFO" 	
+	echo "$SSETTINGS"
+	echo ""
+	echo "SERVER PID:" 		
+	echo "$SRUNPID" 		
+	echo ""
+	echo "ALL SERVERS PID's:"
+	echo "$SALLPID"
+	echo "---------------------------------------"

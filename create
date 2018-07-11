@@ -1,13 +1,99 @@
 #!/bin/bash
 
+
+# STOP PREVIOUS SERVERS
+# ---------------------
+~/Steam/st600760/stop >> /dev/null 2>&1
+
+echo "" > ~/Steam/st600760/settings
+
+# Q1
+# --
+
+read -p "Play Beta (yes/no): " BETA
+
+if [ $BETA = yes ]
+then
+	echo "beta: yes" > ~/Steam/st600760/settings
+elif [ $BETA = Yes ]
+then
+	echo "beta: yes" >> ~/Steam/st600760/settings
+elif [ $BETA = YES ]
+then
+	echo "beta: yes" >> ~/Steam/st600760/settings
+elif [ $BETA = y ]
+then
+	echo "beta: yes" >> ~/Steam/st600760/settings
+elif [ $BETA = Y ]
+then
+	echo "beta: yes" >> ~/Steam/st600760/settings
+else
+	echo "beta: no" >> ~/Steam/st600760/settings
+fi
+
+
+
+# Q2
+# --
+
 read -p "Worldname (Worldname and Loadname): " WORLDNAME
-echo "worldname: $WORLDNAME" > ~/Steam/st600760/settings
+echo "worldname: $WORLDNAME" >> ~/Steam/st600760/settings
+
+
+
+# Q3
+# --
 
 read -p "Worldtype (Mars, Moon or Space): " WORLDTYPE
 echo "worldtype: $WORLDTYPE" >> ~/Steam/st600760/settings
 
-read -p "Password (Server login password): " PASSWORD
-echo "password: $PASSWORD" >> ~/Steam/st600760/settings
 
-read -p "Servername (Server name ingame): " SERVERNAME
+
+# Q4
+# --
+read -p "Servername (Ingame Servername NOSPACES): " SERVERNAME
 echo "servername: $SERVERNAME" >> ~/Steam/st600760/settings
+
+
+
+# Q5
+# --
+
+read -p "Password Protect Server (yes/no): " SECURE
+echo "secure: $SECURE" >> ~/Steam/st600760/settings
+
+if [ $SECURE = yes ]
+then
+	read -p "Password (Server login password): " PASSWORD
+	echo "password: $PASSWORD" >> ~/Steam/st600760/settings
+elif [ $SECURE = Yes ]
+then
+	read -p "Password (Server login password): " PASSWORD
+	echo "password: $PASSWORD" >> ~/Steam/st600760/settings
+elif [ $SECURE = YES ]
+then
+	read -p "Password (Server login password): " PASSWORD
+	echo "password: $PASSWORD" >> ~/Steam/st600760/settings
+elif [ $SECURE = y ]
+then
+	read -p "Password (Server login password): " PASSWORD
+	echo "password: $PASSWORD" >> ~/Steam/st600760/settings
+elif [ $SECURE = Y ]
+then
+	read -p "Password (Server login password): " PASSWORD
+	echo "password: $PASSWORD" >> ~/Steam/st600760/settings
+else
+	echo "Server NOT password protected"
+fi
+
+
+
+# SHOW SETTINGS
+# -------------
+
+echo ""
+echo "----------------------------------------------"
+cat ~/Steam/st600760/settings
+echo ""
+echo "----------------------------------------------"
+echo ""

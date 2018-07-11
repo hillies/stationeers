@@ -1,33 +1,115 @@
 #!/bin/bash
 
+# STOP PREVIOUS SERVERS
+# ---------------------
+~/Steam/st600760/stop >> /dev/null 2>&1
+
 # VARIABLES
 # ---------
-NAME=$(cat ~/Steam/st600760/settings | grep name: | awk '{ print $2 }')
-TYPE=$(cat ~/Steam/st600760/settings | grep type: | awk '{ print $2 }')
-PASWD=$(cat ~/Steam/st600760/settings | grep password: | awk '{ print $2 }')
-SERVN=$(cat ~/Steam/st600760/settings | grep servername: | awk '{ print $2 }')
+SECURE=$(cat ~/Steam/st600760/settings | grep secure: | awk '{ print $2 }')
+WORLDNAME=$(cat ~/Steam/st600760/settings | grep worldname: | awk '{ print $2 }')
+WORLDTYPE=$(cat ~/Steam/st600760/settings | grep worldtype: | awk '{ print $2 }')
+PASSWORD=$(cat ~/Steam/st600760/settings | grep password: | awk '{ print $2 }')
+SERVERNAME=$(cat ~/Steam/st600760/settings | grep servername: | awk '{ print $2 }')
 
-echo "------------------------------------------"
-echo
-echo "Name: $NAME"
-echo "Type $TYPE"
-echo "Password: $PASWD"
-echo "Servername: $SERVN"
-echo
-echo "------------------------------------------"
+#########################################################################################################################
 
-# COMMAND
-# -------
-~/Steam/steamapps/common/Stationeers\ Dedicated\ Server/rocketstation_DedicatedServer.x86_64 \
-	-autostart \
-	-batchmode \
-	-nographics \
-	-password=$PASWD \
-	-autosaveinterval=300 \
-	-clearallinterval=65535 \
-	-loadworld=$NAME \
-	-worldtype=$TYPE \
-	-worldname=$NAME \
-	-servername=$SERVN \
-	-basedirectory=~/Steam/ \
-	&
+if [ $SECURE = yes ]
+then
+	echo "------------------------------------------"
+	echo
+	echo "Secure: yes"
+	echo "Name: $WORLDNAME"
+	echo "Type $WORLDTYPE"
+	echo "Password: $PASSWORD"
+	echo "Servername: $SERVERNAME"
+	echo
+	echo "------------------------------------------"
+
+	~/Steam/steamapps/common/Stationeers\ Dedicated\ Server/rocketstation_DedicatedServer.x86_64 \
+        -autostart \
+        -batchmode \
+        -nographics \
+        -password=$PASSWORD \
+        -autosaveinterval=300 \
+        -clearallinterval=65535 \
+        -loadworld=$WORLDNAME \
+        -worldtype=$WORLDTYPE \
+        -worldname=$WORLDNAME \
+        -servername=$SERVERNAME \
+        -basedirectory=~/Steam/ \
+        &
+elif [ $SECURE = y ]
+then
+	echo "------------------------------------------"
+	echo
+	echo "Secure: yes"
+	echo "Name: $WORLDNAME"
+	echo "Type $WORLDTYPE"
+	echo "Password: $PASSWORD"
+	echo "Servername: $SERVERNAME"
+	echo
+	echo "------------------------------------------"
+
+	~/Steam/steamapps/common/Stationeers\ Dedicated\ Server/rocketstation_DedicatedServer.x86_64 \
+        -autostart \
+        -batchmode \
+        -nographics \
+        -password=$PASSWORD \
+        -autosaveinterval=300 \
+        -clearallinterval=65535 \
+        -loadworld=$WORLDNAME \
+        -worldtype=$WORLDTYPE \
+        -worldname=$WORLDNAME \
+        -servername=$SERVERNAME \
+        -basedirectory=~/Steam/ \
+        &
+elif [ $SECURE = no ]
+then
+	echo "------------------------------------------"
+	echo
+	echo "Secure: no"
+	echo "Name: $WORLDNAME"
+	echo "Type $WORLDTYPE"
+	echo "Servername: $SERVERNAME"
+	echo
+	echo "------------------------------------------"
+
+	~/Steam/steamapps/common/Stationeers\ Dedicated\ Server/rocketstation_DedicatedServer.x86_64 \
+        -autostart \
+        -batchmode \
+        -nographics \
+        -autosaveinterval=300 \
+        -clearallinterval=65535 \
+        -loadworld=$WORLDNAME \
+        -worldtype=$WORLDTYPE \
+        -worldname=$WORLDNAME \
+        -servername=$SERVERNAME \
+        -basedirectory=~/Steam/ \
+        &
+elif [ $SECURE = n ]
+then
+	echo "------------------------------------------"
+	echo
+	echo "Secure: no"
+	echo "Name: $WORLDNAME"
+	echo "Type $WORLDTYPE"
+	echo "Servername: $SERVERNAME"
+	echo
+	echo "------------------------------------------"
+
+	~/Steam/steamapps/common/Stationeers\ Dedicated\ Server/rocketstation_DedicatedServer.x86_64 \
+        -autostart \
+        -batchmode \
+        -nographics \
+        -autosaveinterval=300 \
+        -clearallinterval=65535 \
+        -loadworld=$WORLDNAME \
+        -worldtype=$WORLDTYPE \
+        -worldname=$WORLDNAME \
+        -servername=$SERVERNAME \
+        -basedirectory=~/Steam/ \
+        &
+else
+        echo " NO SETTINGS"
+fi
