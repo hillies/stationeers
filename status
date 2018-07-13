@@ -1,16 +1,16 @@
 #!/bin/bash
 
-SSETTINGS=$(cat ~/Steam/st600760/settings)
-SRUNPID=$(/usr/bin/ps auxww | grep -e $(cat ~/Steam/st600760/settings | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $2 }')
-SA15=$(/usr/bin/ps auxww | grep -e $(cat ~/Steam/st600760/settings | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $15 }')
-SA16=$(/usr/bin/ps auxww | grep -e $(cat ~/Steam/st600760/settings | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $16 }')
-SA17=$(/usr/bin/ps auxww | grep -e $(cat ~/Steam/st600760/settings | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $17 }')
-SA18=$(/usr/bin/ps auxww | grep -e $(cat ~/Steam/st600760/settings | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $18 }')
-SA19=$(/usr/bin/ps auxww | grep -e $(cat ~/Steam/st600760/settings | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $19 }')
-SA20=$(/usr/bin/ps auxww | grep -e $(cat ~/Steam/st600760/settings | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $20 }')
-SA21=$(/usr/bin/ps auxww | grep -e $(cat ~/Steam/st600760/settings | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $21 }')
-SA22=$(/usr/bin/ps auxww | grep -e $(cat ~/Steam/st600760/settings | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $22 }')
-SA23=$(/usr/bin/ps auxww | grep -e $(cat ~/Steam/st600760/settings | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $23 }')
+SSETTINGS=$(cat ~/Steam/st600760/config)
+SRUNPID=$(/usr/bin/ps auxww | grep -e $(cat ~/Steam/st600760/config | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $2 }')
+SA15=$(/usr/bin/ps auxww | grep -e $(cat ~/Steam/st600760/config | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $15 }')
+SA16=$(/usr/bin/ps auxww | grep -e $(cat ~/Steam/st600760/config | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $16 }')
+SA17=$(/usr/bin/ps auxww | grep -e $(cat ~/Steam/st600760/config | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $17 }')
+SA18=$(/usr/bin/ps auxww | grep -e $(cat ~/Steam/st600760/config | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $18 }')
+SA19=$(/usr/bin/ps auxww | grep -e $(cat ~/Steam/st600760/config | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $19 }')
+SA20=$(/usr/bin/ps auxww | grep -e $(cat ~/Steam/st600760/config | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $20 }')
+SA21=$(/usr/bin/ps auxww | grep -e $(cat ~/Steam/st600760/config | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $21 }')
+SA22=$(/usr/bin/ps auxww | grep -e $(cat ~/Steam/st600760/config | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $22 }')
+SA23=$(/usr/bin/ps auxww | grep -e $(cat ~/Steam/st600760/config | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $23 }')
 SALLPID=$(/usr/bin/ps auxww | grep -e rocketstation_De | grep -v grep | awk '{ print $2 }')
 
 	echo ""

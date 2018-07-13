@@ -6,11 +6,11 @@
 
 # VARIABLES
 # ---------
-SECURE=$(cat ~/Steam/st600760/settings | grep secure: | awk '{ print $2 }')
-WORLDNAME=$(cat ~/Steam/st600760/settings | grep worldname: | awk '{ print $2 }')
-WORLDTYPE=$(cat ~/Steam/st600760/settings | grep worldtype: | awk '{ print $2 }')
-PASSWORD=$(cat ~/Steam/st600760/settings | grep password: | awk '{ print $2 }')
-SERVERNAME=$(cat ~/Steam/st600760/settings | grep servername: | awk '{ print $2 }')
+SECURE=$(cat ~/Steam/st600760/config | grep secure: | awk '{ print $2 }')
+WORLDNAME=$(cat ~/Steam/st600760/config | grep worldname: | awk '{ print $2 }')
+WORLDTYPE=$(cat ~/Steam/st600760/config | grep worldtype: | awk '{ print $2 }')
+PASSWORD=$(cat ~/Steam/st600760/config | grep password: | awk '{ print $2 }')
+SERVERNAME=$(cat ~/Steam/st600760/config | grep servername: | awk '{ print $2 }')
 
 #########################################################################################################################
 

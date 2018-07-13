@@ -5,7 +5,7 @@
 # ---------------------
 ~/Steam/st600760/stop >> /dev/null 2>&1
 
-echo "" > ~/Steam/st600760/settings
+echo "" > ~/Steam/st600760/config
 
 
 
@@ -15,24 +15,24 @@ read -p "Play Beta (yes/no)? " BETA
 
 if [ -z "$BETA" ]
 then
-	echo "beta: no" > ~/Steam/st600760/settings
+	echo "beta: no" > ~/Steam/st600760/config
 elif [ $BETA = yes ]
 then
-	echo "beta: yes" > ~/Steam/st600760/settings
+	echo "beta: yes" > ~/Steam/st600760/config
 elif [ $BETA = Yes ]
 then
-	echo "beta: yes" >> ~/Steam/st600760/settings
+	echo "beta: yes" >> ~/Steam/st600760/config
 elif [ $BETA = YES ]
 then
-	echo "beta: yes" >> ~/Steam/st600760/settings
+	echo "beta: yes" >> ~/Steam/st600760/config
 elif [ $BETA = y ]
 then
-	echo "beta: yes" >> ~/Steam/st600760/settings
+	echo "beta: yes" >> ~/Steam/st600760/config
 elif [ $BETA = Y ]
 then
-	echo "beta: yes" >> ~/Steam/st600760/settings
+	echo "beta: yes" >> ~/Steam/st600760/config
 else
-	echo "beta: no" >> ~/Steam/st600760/settings
+	echo "beta: no" >> ~/Steam/st600760/config
 fi
 
 
@@ -40,7 +40,7 @@ fi
 # Q2
 # --
 read -p "Worldname? " WORLDNAME
-echo "worldname: $WORLDNAME" >> ~/Steam/st600760/settings
+echo "worldname: $WORLDNAME" >> ~/Steam/st600760/config
 
 
 
@@ -54,16 +54,16 @@ read -p "Worldtype (1,2,3,4): " WORLDTYPE
 
 if [ $WORLDTYPE = 1 ]
 then
-	echo "worldtype: Moon" >> ~/Steam/st600760/settings
+	echo "worldtype: Moon" >> ~/Steam/st600760/config
 elif [ $WORLDTYPE = 2 ]
 then
-	echo "worldtype: Mars" >> ~/Steam/st600760/settings
+	echo "worldtype: Mars" >> ~/Steam/st600760/config
 elif [ $WORLDTYPE = 3 ]
 then
-	echo "worldtype: Space" >> ~/Steam/st600760/settings
+	echo "worldtype: Space" >> ~/Steam/st600760/config
 elif [ $WORLDTYPE = 4 ]
 then
-	echo "worldtype: Europa" >> ~/Steam/st600760/settings
+	echo "worldtype: Europa" >> ~/Steam/st600760/config
 fi
 
 
@@ -71,7 +71,7 @@ fi
 # Q4
 # --
 read -p "Servername: " SERVERNAME
-echo "servername: $SERVERNAME" >> ~/Steam/st600760/settings
+echo "servername: $SERVERNAME" >> ~/Steam/st600760/config
 
 
 # Q5
@@ -79,31 +79,31 @@ echo "servername: $SERVERNAME" >> ~/Steam/st600760/settings
 read -p "Password Protect server (yes/no): " SECURE
 if [ $SECURE = yes ]
 then
-	echo "secure: yes" >> ~/Steam/st600760/settings
+	echo "secure: yes" >> ~/Steam/st600760/config
 	read -p "Password: " PASSWORD
-	echo "password: $PASSWORD" >> ~/Steam/st600760/settings
+	echo "password: $PASSWORD" >> ~/Steam/st600760/config
 elif [ $SECURE = Yes ]
 then
-	echo "secure: yes" >> ~/Steam/st600760/settings
+	echo "secure: yes" >> ~/Steam/st600760/config
 	read -p "Password: " PASSWORD
-	echo "password: $PASSWORD" >> ~/Steam/st600760/settings
+	echo "password: $PASSWORD" >> ~/Steam/st600760/config
 elif [ $SECURE = YES ]
 then
-	echo "secure: yes" >> ~/Steam/st600760/settings
+	echo "secure: yes" >> ~/Steam/st600760/config
 	read -p "Password: " PASSWORD
-	echo "password: $PASSWORD" >> ~/Steam/st600760/settings
+	echo "password: $PASSWORD" >> ~/Steam/st600760/config
 elif [ $SECURE = y ]
 then
-	echo "secure: yes" >> ~/Steam/st600760/settings
+	echo "secure: yes" >> ~/Steam/st600760/config
 	read -p "Password: " PASSWORD
-	echo "password: $PASSWORD" >> ~/Steam/st600760/settings
+	echo "password: $PASSWORD" >> ~/Steam/st600760/config
 elif [ $SECURE = Y ]
 then
-	echo "secure: yes" >> ~/Steam/st600760/settings
+	echo "secure: yes" >> ~/Steam/st600760/config
 	read -p "Password: " PASSWORD
-	echo "password: $PASSWORD" >> ~/Steam/st600760/settings
+	echo "password: $PASSWORD" >> ~/Steam/st600760/config
 else
-	echo "secure: no" >> ~/Steam/st600760/settings
+	echo "secure: no" >> ~/Steam/st600760/config
 fi
 
 
@@ -115,32 +115,19 @@ fi
 #read -p "Game Mode (1,2): " GAMEMODE
 #if [ $GAMEMODE = 1 ]
 #then
-#	echo "gamemode: Survival" >> ~/Steam/st600760/settings
+#	echo "gamemode: Survival" >> ~/Steam/st600760/config
 #elif [ $GAMEMODE = 2 ]
 #then
-#	echo "gamemode: Creative" >> ~/Steam/st600760/settings
+#	echo "gamemode: Creative" >> ~/Steam/st600760/config
 #fi
 
 
 # SHOW SETTINGS
 # -------------
-clear
 echo ""
 echo "----------------------------------------------"
-cat ~/Steam/st600760/settings
+cat ~/Steam/st600760/config
 echo ""
 echo "----------------------------------------------"
 echo ""
 
-
-
-# SHOW SETTINGS
-# -------------
-#clear
-#echo ""
-#echo "----------------------------------------------"
-#echo ""
-#cat ~/Steam/st600760/settings
-#echo ""
-#echo "----------------------------------------------"
-#echo ""

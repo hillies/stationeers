@@ -12,7 +12,7 @@
 
 # UPDATE SERVERS
 # --------------
-BETA=$(cat ~/Steam/st600760/settings | grep beta: | awk '{ print $2 }')
+BETA=$(cat ~/Steam/st600760/config | grep beta: | awk '{ print $2 }')
 if [ $BETA = yes ]
 then
 echo "BETA"
@@ -33,4 +33,4 @@ fi
 # START SERVER
 # ------------
 #echo
-~/Steam/st600760/start
+#~/Steam/st600760/start

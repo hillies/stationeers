@@ -28,7 +28,7 @@
 #### Step 2.1: Create steam directory
 `mkdir ~/Steam && cd ~/Steam`
 
-#### Step 2.2: Download steamcmd and extract
+#### Step 2.2: Download steamcmd and extract (steamcmd will be installed at Step 4.2)
 `curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -`
 
 
@@ -45,7 +45,7 @@
 #### Step 4.1: Create server config file
 `~/Steam/st600760/create`
 
-#### Step 4.2: Install Stationeers
+#### Step 4.2: Install Steamcmd and Stationeers 
 `~/Steam/st600760/update`
 
 #### Step 4.3: Create server config file
@@ -55,7 +55,7 @@
 
 ## Manage server
 
-#### Update stationeers (this will stop active server and start it up again after update)
+#### Update stationeers (this will stop active server)
 `~/Steam/st600760/update`
 
 #### Restart active server
