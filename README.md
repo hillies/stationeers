@@ -1,4 +1,4 @@
-## Stationeer(600760) 
+## Stationeers(600760) 
 ###### OS: Fedora 27 Server
 ###### Last Update: 13 July 2018
 ###### Managed by: Hillies
@@ -81,9 +81,9 @@ see https://developer.valvesoftware.com/wiki/SteamCMD for more help
 http://serverip:27500
 * Default Password: stationeers
 * Default Port: 27500
-* See *~/Steam/steamapps/common/Stationeers Dedicated Server/rocketstation_DedicatedServer_Data/StreamingAssets/default.ini* is you want to change the default password and port 
+* See _~/Steam/steamapps/common/Stationeers Dedicated Server/rocketstation_DedicatedServer_Data/StreamingAssets/default.ini_ is you want to change the default password and port 
 
 #### Connect to server
 serverip:27500
 * Default Port: 27500
-* See *~/Steam/steamapps/common/Stationeers Dedicated Server/rocketstation_DedicatedServer_Data/StreamingAssets/default.ini* is you want to change the default password and port
+* See _~/Steam/steamapps/common/Stationeers Dedicated Server/rocketstation_DedicatedServer_Data/StreamingAssets/default.ini_ is you want to change the default password and port
