@@ -1,5 +1,3 @@
-# st600760
-
 ## Stationeer(600760) 
 ###### OS: Fedora 27 Server
 ###### Last Update: 11 July 2018
@@ -47,7 +45,10 @@
 #### Step 4.1: Create server config file
 `~/Steam/st600760/create`
 
-#### Step 4.2: Create server config file
+#### Step 4.2: Install Stationeers
+`~/Steam/st600760/update`
+
+#### Step 4.3: Create server config file
 `~/Steam/st600760/start`
 
 
@@ -64,7 +65,7 @@
 `~/Steam/st600760/stop`
 
 #### Stop all active servers
-`~/Steam/st600760/stopall`
+`~/Steam/st600760/folderx/stopall`
 
 #### Start server
 `~/Steam/st600760/start`
@@ -72,13 +73,3 @@
 #### Create new server (will stop active server and update config file)
 `~/Steam/st600760/create`
 
-
-## Additional notes
-
-#### 1: Running `~/Steam/st600760/create` will create a new file `~/Steam/st600760/settings` with your configurations, running `~/Steam/st600760/create` again will overwright `~/Steam/st600760/settings` configurations file
-#### 2: Everytime you start/restart/update your server it will read the in configurations in `~/Steam/st600760/settings`
-#### 3: This supports standard and beta branch
-#### 4: Working on a backup feature to backup save before doing a update
-#### 5: Working on mod support, for now you'll have to manually add mods.
-
-If you have any questions or suggestions please feel free to contact me on Discord (hillies#9377).

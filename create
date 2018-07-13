@@ -7,12 +7,16 @@
 
 echo "" > ~/Steam/st600760/settings
 
+
+
 # Q1
 # --
+read -p "Play Beta (yes/no)? " BETA
 
-read -p "Play Beta (yes/no): " BETA
-
-if [ $BETA = yes ]
+if [ -z "$BETA" ]
+then
+	echo "beta: no" > ~/Steam/st600760/settings
+elif [ $BETA = yes ]
 then
 	echo "beta: yes" > ~/Steam/st600760/settings
 elif [ $BETA = Yes ]
@@ -35,65 +39,108 @@ fi
 
 # Q2
 # --
-
-read -p "Worldname (Worldname and Loadname): " WORLDNAME
+read -p "Worldname? " WORLDNAME
 echo "worldname: $WORLDNAME" >> ~/Steam/st600760/settings
 
 
 
 # Q3
 # --
+echo "1 = Moon"
+echo "2 = Mars"
+echo "3 = Space"
+echo "4 = Europa"
+read -p "Worldtype (1,2,3,4): " WORLDTYPE
 
-read -p "Worldtype (Mars, Moon or Space): " WORLDTYPE
-echo "worldtype: $WORLDTYPE" >> ~/Steam/st600760/settings
+if [ $WORLDTYPE = 1 ]
+then
+	echo "worldtype: Moon" >> ~/Steam/st600760/settings
+elif [ $WORLDTYPE = 2 ]
+then
+	echo "worldtype: Mars" >> ~/Steam/st600760/settings
+elif [ $WORLDTYPE = 3 ]
+then
+	echo "worldtype: Space" >> ~/Steam/st600760/settings
+elif [ $WORLDTYPE = 4 ]
+then
+	echo "worldtype: Europa" >> ~/Steam/st600760/settings
+fi
 
 
 
 # Q4
 # --
-read -p "Servername (Ingame Servername NOSPACES): " SERVERNAME
+read -p "Servername: " SERVERNAME
 echo "servername: $SERVERNAME" >> ~/Steam/st600760/settings
-
 
 
 # Q5
 # --
-
-read -p "Password Protect Server (yes/no): " SECURE
-echo "secure: $SECURE" >> ~/Steam/st600760/settings
-
+read -p "Password Protect server (yes/no): " SECURE
 if [ $SECURE = yes ]
 then
-	read -p "Password (Server login password): " PASSWORD
+	echo "secure: yes" >> ~/Steam/st600760/settings
+	read -p "Password: " PASSWORD
 	echo "password: $PASSWORD" >> ~/Steam/st600760/settings
 elif [ $SECURE = Yes ]
 then
-	read -p "Password (Server login password): " PASSWORD
+	echo "secure: yes" >> ~/Steam/st600760/settings
+	read -p "Password: " PASSWORD
 	echo "password: $PASSWORD" >> ~/Steam/st600760/settings
 elif [ $SECURE = YES ]
 then
-	read -p "Password (Server login password): " PASSWORD
+	echo "secure: yes" >> ~/Steam/st600760/settings
+	read -p "Password: " PASSWORD
 	echo "password: $PASSWORD" >> ~/Steam/st600760/settings
 elif [ $SECURE = y ]
 then
-	read -p "Password (Server login password): " PASSWORD
+	echo "secure: yes" >> ~/Steam/st600760/settings
+	read -p "Password: " PASSWORD
 	echo "password: $PASSWORD" >> ~/Steam/st600760/settings
 elif [ $SECURE = Y ]
 then
-	read -p "Password (Server login password): " PASSWORD
+	echo "secure: yes" >> ~/Steam/st600760/settings
+	read -p "Password: " PASSWORD
 	echo "password: $PASSWORD" >> ~/Steam/st600760/settings
 else
-	echo "Server NOT password protected"
+	echo "secure: no" >> ~/Steam/st600760/settings
 fi
 
 
 
+# Q6
+## --
+#echo "1 = Survival"
+#echo "2 = Creative"
+#read -p "Game Mode (1,2): " GAMEMODE
+#if [ $GAMEMODE = 1 ]
+#then
+#	echo "gamemode: Survival" >> ~/Steam/st600760/settings
+#elif [ $GAMEMODE = 2 ]
+#then
+#	echo "gamemode: Creative" >> ~/Steam/st600760/settings
+#fi
+
+
 # SHOW SETTINGS
 # -------------
-
+clear
 echo ""
 echo "----------------------------------------------"
 cat ~/Steam/st600760/settings
 echo ""
 echo "----------------------------------------------"
 echo ""
+
+
+
+# SHOW SETTINGS
+# -------------
+#clear
+#echo ""
+#echo "----------------------------------------------"
+#echo ""
+#cat ~/Steam/st600760/settings
+#echo ""
+#echo "----------------------------------------------"
+#echo ""

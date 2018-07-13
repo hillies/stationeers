@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#F0="~/Steam/steamapps/common/Stationeers\ Dedicated\ Server/server/saves"
+F0="~/Steam/steamapps/common/"
+F1=$(ls -l ~/Steam/steamapps/common/Stationeers\ Dedicated\ Server/server/saves/ | grep "^d" | awk '{ print $9 }')
+
+cd $F0/$F1
+

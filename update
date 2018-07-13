@@ -15,17 +15,11 @@
 BETA=$(cat ~/Steam/st600760/settings | grep beta: | awk '{ print $2 }')
 if [ $BETA = yes ]
 then
-	echo "BETA"
-	~/Steam/steamcmd.sh \
- 	+login anonymous \
-	+app_update 600760 -beta beta validate \
-	+quit
+echo "BETA"
+~/Steam/steamcmd.sh +login anonymous +app_update 600760 validate +quit
 else
-	echo "STANDARD"
-        ~/Steam/steamcmd.sh \
-        +login anonymous \
-        +app_update 600760 validate \
-        +quit
+echo "STANDARD"
+~/Steam/steamcmd.sh +login anonymous +app_update 600760 validate +quit
 fi
 
 # COPY MINING MOD
