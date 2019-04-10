@@ -57,6 +57,9 @@ then
         -autostart \
         -batchmode \
         -nographics \
+        -autostart \
+        -updateport 27015 \
+        -gameport 27016 \
         -autosaveinterval=300 \
         -clearallinterval=65535 \
         -loadworld=$WORLDNAME \
