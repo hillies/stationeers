@@ -1,16 +1,18 @@
 #!/bin/bash
 
+ROOTP=$(cd "${0%/*}" && echo $PWD)
+
 # STOP PREVIOUS SERVERS
 # ---------------------
-/usr/local/stationeers/stop >> /dev/null 2>&1
+$ROOTP/stop >> /dev/null 2>&1
 
 # VARIABLES
 # ---------
-SECURE=$(cat /usr/local/stationeers/config | grep secure: | awk '{ print $2 }')
-WORLDNAME=$(cat /usr/local/stationeers/config | grep worldname: | awk '{ print $2 }')
-WORLDTYPE=$(cat /usr/local/stationeers/config | grep worldtype: | awk '{ print $2 }')
-PASSWORD=$(cat /usr/local/stationeersconfig | grep password: | awk '{ print $2 }')
-SERVERNAME=$(cat /usr/local/stationeers/config | grep servername: | awk '{ print $2 }')
+SECURE=$(cat $ROOTP/config | grep secure: | awk '{ print $2 }')
+WORLDNAME=$(cat $ROOTP/config | grep worldname: | awk '{ print $2 }')
+WORLDTYPE=$(cat $ROOTP/config | grep worldtype: | awk '{ print $2 }')
+PASSWORD=$(cat $ROOTPconfig | grep password: | awk '{ print $2 }')
+SERVERNAME=$(cat $ROOTP/config | grep servername: | awk '{ print $2 }')
 
 #########################################################################################################################
 

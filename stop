@@ -1,3 +1,5 @@
 #!/bin/bash
 
-/usr/bin/kill -9 $(ps auxww | grep -e $(cat ~/Steam/st600760/config | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $2 }') 
+ROOTP=$(cd "${0%/*}" && echo $PWD)
+
+/usr/bin/kill -9 $(ps auxww | grep -e $(cat $ROOTP/config | grep worldname: | awk '{ print $2 }') | grep -v grep | awk '{ print $2 }') 

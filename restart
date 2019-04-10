@@ -1,11 +1,13 @@
 #!/bin/bash
 
+ROOTP=$(cd "${0%/*}" && echo $PWD)
+
 # STOP SERVER
 # -----------
-~/Steam/st600760/stop
+$ROOTP/stop
 
 # START SERVER
 # ------------
-~/Steam/st600760/start
+$ROOTP/start
 
 

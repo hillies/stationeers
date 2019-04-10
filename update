@@ -1,25 +1,27 @@
 #!/bin/bash
 
+ROOTP=$(cd "${0%/*}" && echo $PWD)
+
 # STOP SERVER
 # -----------
-~/Steam/st600760/stop >> /dev/null 2>&1
+$ROOTP/stop >> /dev/null 2>&1
 
 
 # BACKUP SERVER
 # -------------
-#~/Steam/st600760/backup
+#$ROOTP/backup
 
 
 # UPDATE SERVERS
 # --------------
-BETA=$(cat ~/Steam/st600760/config | grep beta: | awk '{ print $2 }')
+BETA=$(cat $ROOTP/config | grep beta: | awk '{ print $2 }')
 if [ $BETA = yes ]
 then
 echo "BETA"
 ~/Steam/steamcmd.sh +login anonymous +app_update 600760 validate +quit
 else
 echo "STANDARD"
-~/Steam/steamcmd.sh +login anonymous +app_update 600760 validate +quit
+~/Steam/steamcmd.sh +login anonymous  +force_install_dir /usr/local/steamgame_600760/ +app_update 600760 validate +quit
 fi
 
 # COPY MINING MOD
@@ -33,4 +35,4 @@ fi
 # START SERVER
 # ------------
 #echo
-#~/Steam/st600760/start
+#$ROOTP/start

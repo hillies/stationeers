@@ -1,15 +1,17 @@
 #!/bin/bash
 
+ROOTP=$(cd "${0%/*}" && echo $PWD)
+
 stop_server () {
-	/usr/local/stationeers/stop >> /dev/null 2>&1
+	$ROOTP/stop >> /dev/null 2>&1
 }
 
 # CONFIG FILE
 # -----------
 config_update () {
-	if [ ! -f /usr/local/stationeers/config ]
+	if [ ! -f $ROOTP/config ]
 	then
-		touch /usr/local/stationeers/config
+		touch $ROOTP/config
 		FIRSTRUN=y
 	else
 		FIRSTRUN=n
@@ -27,12 +29,12 @@ config_update () {
 		fi
 		if [ $UPDATE = y ]
 		then
-			P_BETA=$(cat /usr/local/stationeers/config | grep beta: | awk '{ print $2 }')
-			P_SECURE=$(cat /usr/local/stationeers/config | grep secure: | awk '{ print $2 }')
-			P_WORLDNAME=$(cat /usr/local/stationeers/config | grep worldname: | awk '{ print $2 }')
-			P_WORLDTYPE=$(cat /usr/local/stationeers/config | grep worldtype: | awk '{ print $2 }')
-			P_PASSWORD=$(cat /usr/local/stationeers/config | grep password: | awk '{ print $2 }')
-			P_SERVERNAME=$(cat /usr/local/stationeers/config | grep servername: | awk '{ print $2 }')
+			P_BETA=$(cat $ROOTP/config | grep beta: | awk '{ print $2 }')
+			P_SECURE=$(cat $ROOTP/config | grep secure: | awk '{ print $2 }')
+			P_WORLDNAME=$(cat $ROOTP/config | grep worldname: | awk '{ print $2 }')
+			P_WORLDTYPE=$(cat $ROOTP/config | grep worldtype: | awk '{ print $2 }')
+			P_PASSWORD=$(cat $ROOTP/config | grep password: | awk '{ print $2 }')
+			P_SERVERNAME=$(cat $ROOTP/config | grep servername: | awk '{ print $2 }')
 		else
 			UPDATE=n
 		fi
@@ -56,9 +58,9 @@ Q1_Beta () {
 	fi
 	if [ $BETA = y ]
 	then
-		echo "beta: yes" >> /usr/local/stationeers/config
+		echo "beta: yes" >> $ROOTP/config
 	else
-		echo "beta: no" >> /usr/local/stationeers/config
+		echo "beta: no" >> $ROOTP/config
 	fi
 }
 
@@ -67,7 +69,7 @@ Q1_Beta () {
 # --
 Q2_Worldname () {
 	read -p "Worldname? " WORLDNAME
-	echo "worldname: $WORLDNAME" >> /usr/local/stationeers/config
+	echo "worldname: $WORLDNAME" >> $ROOTP/config
 }
 
 
@@ -82,16 +84,16 @@ Q3_Worldtype () {
 
 	if [ $WORLDTYPE = 1 ]
 	then
-		echo "worldtype: Moon" >> /usr/local/stationeers/config
+		echo "worldtype: Moon" >> $ROOTP/config
 	elif [ $WORLDTYPE = 2 ]
 	then
-		echo "worldtype: Mars" >> /usr/local/stationeers/config
+		echo "worldtype: Mars" >> $ROOTP/config
 	elif [ $WORLDTYPE = 3 ]
 	then
-		echo "worldtype: Space" >> /usr/local/stationeers/config
+		echo "worldtype: Space" >> $ROOTP/config
 	elif [ $WORLDTYPE = 4 ]
 	then
-		echo "worldtype: Europa" >> /usr/local/stationeers/config
+		echo "worldtype: Europa" >> $ROOTP/config
 	else
 		echo "Invalid option ($WORLDTYPE)"
 	fi
@@ -102,7 +104,7 @@ Q3_Worldtype () {
 # --
 Q4_Servername () {
 	read -p "Servername: " SERVERNAME
-	echo "servername: $SERVERNAME" >> /usr/local/stationeers/config
+	echo "servername: $SERVERNAME" >> $ROOTP/config
 }
 
 
@@ -122,12 +124,12 @@ Q5_Secure () {
 	fi
 	if [ $SECURE = y ]
 	then
-		echo "secure: yes" >> /usr/local/stationeers/config
+		echo "secure: yes" >> $ROOTP/config
 		read -p "Password: " PASSWORD
-		echo "password: $PASSWORD" >> /usr/local/stationeers/config
+		echo "password: $PASSWORD" >> $ROOTP/config
 	else
-		echo "secure: no" >> /usr/local/stationeers/config
-		echo "password: " >> /usr/local/stationeers/config
+		echo "secure: no" >> $ROOTP/config
+		echo "password: " >> $ROOTP/config
 	fi
 }
 
@@ -143,8 +145,8 @@ then
 else
 	if [ $UPDATE = y ]
 	then
-		cp /usr/local/stationeers/config /usr/local/stationeers/config.back
-		rm /usr/local/stationeers/config && touch /usr/local/stationeers/config
+		cp $ROOTP/config $ROOTP/config.back
+		rm $ROOTP/config && touch $ROOTP/config
 		echo ""
 		echo "-------- Beta ----------"
 		echo ""
@@ -162,7 +164,7 @@ else
 		fi
 		if [ $KEEP = y ]
 		then
-			echo "beta: $P_BETA" >> /usr/local/stationeers/config
+			echo "beta: $P_BETA" >> $ROOTP/config
 		else
 			Q1_Beta
 		fi
@@ -184,7 +186,7 @@ else
 		fi
 		if [ $KEEP = y ]
 		then
-			echo "worldname: $P_WORLDNAME" >> /usr/local/stationeers/config
+			echo "worldname: $P_WORLDNAME" >> $ROOTP/config
 		else
 			Q2_Worldname
 		fi
@@ -206,7 +208,7 @@ else
 		fi
 		if [ $KEEP = y ]
 		then
-			echo "worldtype: $P_WORLDTYPE" >> /usr/local/stationeers/config
+			echo "worldtype: $P_WORLDTYPE" >> $ROOTP/config
 		else
 			Q3_Worldtype
 		fi
@@ -228,7 +230,7 @@ else
 		fi
 		if [ $KEEP = y ]
 		then
-			echo "servername: $P_SERVERNAME" >> /usr/local/stationeers/config
+			echo "servername: $P_SERVERNAME" >> $ROOTP/config
 		else
 			Q4_Servername
 		fi
@@ -250,14 +252,13 @@ else
 		fi
 		if [ $KEEP = y ]
 		then
-			echo "secure: $P_SECURE" >> /usr/local/stationeers/config
-			echo "password: $P_PASSWORD" >> /usr/local/stationeers/config
+			echo "secure: $P_SECURE" >> $ROOTP/config
+			echo "password: $P_PASSWORD" >> $ROOTP/config
 		else
 			Q5_Secure
 		fi
 	fi
-fi
-
+fi 
 
 
 
@@ -268,10 +269,10 @@ fi
 #read -p "Game Mode (1,2): " GAMEMODE
 #if [ $GAMEMODE = 1 ]
 #then
-#	echo "gamemode: Survival" >> /usr/local/stationeers/config
+#	echo "gamemode: Survival" >> $ROOTP/config
 #elif [ $GAMEMODE = 2 ]
 #then
-#	echo "gamemode: Creative" >> /usr/local/stationeers/config
+#	echo "gamemode: Creative" >> $ROOTP/config
 #fi
 
 
@@ -279,7 +280,7 @@ fi
 # -------------
 echo ""
 echo "----------------------------------------------"
-cat /usr/local/stationeers/config
+cat $ROOTP/config
 echo "----------------------------------------------"
 echo ""
 
