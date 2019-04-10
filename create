@@ -1,110 +1,263 @@
 #!/bin/bash
 
+stop_server () {
+	/usr/local/stationeers/stop >> /dev/null 2>&1
+}
 
-# STOP PREVIOUS SERVERS
-# ---------------------
-~/Steam/st600760/stop >> /dev/null 2>&1
-
-echo "" > ~/Steam/st600760/config
-
+# CONFIG FILE
+# -----------
+config_update () {
+	if [ ! -f /usr/local/stationeers/config ]
+	then
+		touch /usr/local/stationeers/config
+		FIRSTRUN=y
+	else
+		FIRSTRUN=n
+		echo "File exist already"
+		read -p "Update (y/n)? Enter for (y) :" UPDATE
+		if [ -z "$UPDATE" ]
+		then
+			UPDATE=y
+		elif [ $UPDATE = y ]
+		then
+			UPDATE=y
+		elif [ $UPDATE = n ]
+		then
+			UPDATE=n
+		fi
+		if [ $UPDATE = y ]
+		then
+			P_BETA=$(cat /usr/local/stationeers/config | grep beta: | awk '{ print $2 }')
+			P_SECURE=$(cat /usr/local/stationeers/config | grep secure: | awk '{ print $2 }')
+			P_WORLDNAME=$(cat /usr/local/stationeers/config | grep worldname: | awk '{ print $2 }')
+			P_WORLDTYPE=$(cat /usr/local/stationeers/config | grep worldtype: | awk '{ print $2 }')
+			P_PASSWORD=$(cat /usr/local/stationeers/config | grep password: | awk '{ print $2 }')
+			P_SERVERNAME=$(cat /usr/local/stationeers/config | grep servername: | awk '{ print $2 }')
+		else
+			UPDATE=n
+		fi
+	fi
+}
 
 
 # Q1
 # --
-read -p "Play Beta (yes/no)? " BETA
-
-if [ -z "$BETA" ]
-then
-	echo "beta: no" > ~/Steam/st600760/config
-elif [ $BETA = yes ]
-then
-	echo "beta: yes" > ~/Steam/st600760/config
-elif [ $BETA = Yes ]
-then
-	echo "beta: yes" >> ~/Steam/st600760/config
-elif [ $BETA = YES ]
-then
-	echo "beta: yes" >> ~/Steam/st600760/config
-elif [ $BETA = y ]
-then
-	echo "beta: yes" >> ~/Steam/st600760/config
-elif [ $BETA = Y ]
-then
-	echo "beta: yes" >> ~/Steam/st600760/config
-else
-	echo "beta: no" >> ~/Steam/st600760/config
-fi
-
+Q1_Beta () {
+	read -p "Play Beta (y/n)? Enter for(n) :" BETA
+	if [ -z "$BETA" ]
+	then
+		BETA=n
+	elif [ $BETA = n ]
+	then
+		BETA=n
+	elif [ $BETA = y ]
+	then
+		BETA=y
+	fi
+	if [ $BETA = y ]
+	then
+		echo "beta: yes" >> /usr/local/stationeers/config
+	else
+		echo "beta: no" >> /usr/local/stationeers/config
+	fi
+}
 
 
 # Q2
 # --
-read -p "Worldname? " WORLDNAME
-echo "worldname: $WORLDNAME" >> ~/Steam/st600760/config
-
+Q2_Worldname () {
+	read -p "Worldname? " WORLDNAME
+	echo "worldname: $WORLDNAME" >> /usr/local/stationeers/config
+}
 
 
 # Q3
 # --
-echo "1 = Moon"
-echo "2 = Mars"
-echo "3 = Space"
-echo "4 = Europa"
-read -p "Worldtype (1,2,3,4): " WORLDTYPE
+Q3_Worldtype () {
+	echo "1 = Moon"
+	echo "2 = Mars"
+	echo "3 = Space"
+	echo "4 = Europa"
+	read -p "Worldtype (1,2,3,4): " WORLDTYPE
 
-if [ $WORLDTYPE = 1 ]
-then
-	echo "worldtype: Moon" >> ~/Steam/st600760/config
-elif [ $WORLDTYPE = 2 ]
-then
-	echo "worldtype: Mars" >> ~/Steam/st600760/config
-elif [ $WORLDTYPE = 3 ]
-then
-	echo "worldtype: Space" >> ~/Steam/st600760/config
-elif [ $WORLDTYPE = 4 ]
-then
-	echo "worldtype: Europa" >> ~/Steam/st600760/config
-fi
-
+	if [ $WORLDTYPE = 1 ]
+	then
+		echo "worldtype: Moon" >> /usr/local/stationeers/config
+	elif [ $WORLDTYPE = 2 ]
+	then
+		echo "worldtype: Mars" >> /usr/local/stationeers/config
+	elif [ $WORLDTYPE = 3 ]
+	then
+		echo "worldtype: Space" >> /usr/local/stationeers/config
+	elif [ $WORLDTYPE = 4 ]
+	then
+		echo "worldtype: Europa" >> /usr/local/stationeers/config
+	else
+		echo "Invalid option ($WORLDTYPE)"
+	fi
+}
 
 
 # Q4
 # --
-read -p "Servername: " SERVERNAME
-echo "servername: $SERVERNAME" >> ~/Steam/st600760/config
+Q4_Servername () {
+	read -p "Servername: " SERVERNAME
+	echo "servername: $SERVERNAME" >> /usr/local/stationeers/config
+}
 
 
 # Q5
 # --
-read -p "Password Protect server (yes/no): " SECURE
-if [ $SECURE = yes ]
+Q5_Secure () {
+	read -p "Password Protect server (y/n)? Enter for (n): " SECURE
+	if [ -z "$SECURE" ]
+	then
+		SECURE=n
+	elif [ $SECURE = n ]
+	then
+		SECURE=n
+	elif [ $SECURE = y ]
+	then
+		SECURE=y
+	fi
+	if [ $SECURE = y ]
+	then
+		echo "secure: yes" >> /usr/local/stationeers/config
+		read -p "Password: " PASSWORD
+		echo "password: $PASSWORD" >> /usr/local/stationeers/config
+	else
+		echo "secure: no" >> /usr/local/stationeers/config
+		echo "password: " >> /usr/local/stationeers/config
+	fi
+}
+
+config_update
+
+if [ $FIRSTRUN = y ]
 then
-	echo "secure: yes" >> ~/Steam/st600760/config
-	read -p "Password: " PASSWORD
-	echo "password: $PASSWORD" >> ~/Steam/st600760/config
-elif [ $SECURE = Yes ]
-then
-	echo "secure: yes" >> ~/Steam/st600760/config
-	read -p "Password: " PASSWORD
-	echo "password: $PASSWORD" >> ~/Steam/st600760/config
-elif [ $SECURE = YES ]
-then
-	echo "secure: yes" >> ~/Steam/st600760/config
-	read -p "Password: " PASSWORD
-	echo "password: $PASSWORD" >> ~/Steam/st600760/config
-elif [ $SECURE = y ]
-then
-	echo "secure: yes" >> ~/Steam/st600760/config
-	read -p "Password: " PASSWORD
-	echo "password: $PASSWORD" >> ~/Steam/st600760/config
-elif [ $SECURE = Y ]
-then
-	echo "secure: yes" >> ~/Steam/st600760/config
-	read -p "Password: " PASSWORD
-	echo "password: $PASSWORD" >> ~/Steam/st600760/config
+	Q1_Beta
+	Q2_Worldname
+	Q3_Worldtype
+	Q4_Servername
+	Q5_Secure
 else
-	echo "secure: no" >> ~/Steam/st600760/config
+	if [ $UPDATE = y ]
+	then
+		cp /usr/local/stationeers/config /usr/local/stationeers/config.back
+		rm /usr/local/stationeers/config && touch /usr/local/stationeers/config
+		echo ""
+		echo "-------- Beta ----------"
+		echo ""
+		echo "Current setting: $P_BETA"
+		read -p "Keep Current setting (y/n)? Enter for (y) :" KEEP
+		if [ -z "$KEEP" ]
+		then
+			KEEP=y
+		elif [ $KEEP = y ]
+		then
+			KEEP=y
+		elif [ $KEEP = n ]
+		then
+			KEEP=n
+		fi
+		if [ $KEEP = y ]
+		then
+			echo "beta: $P_BETA" >> /usr/local/stationeers/config
+		else
+			Q1_Beta
+		fi
+
+		echo ""
+		echo "-------- Worldname ----------"
+		echo ""
+		echo "Current setting: $P_WORLDNAME"
+		read -p "Keep Current setting (y/n)? Enter for (y) :" KEEP
+		if [ -z "$KEEP" ]
+		then
+			KEEP=y
+		elif [ $KEEP = y ]
+		then
+			KEEP=y
+		elif [ $KEEP = n ]
+		then
+			KEEP=n
+		fi
+		if [ $KEEP = y ]
+		then
+			echo "worldname: $P_WORLDNAME" >> /usr/local/stationeers/config
+		else
+			Q2_Worldname
+		fi
+
+		echo ""
+		echo "-------- Worldtype ----------"
+		echo ""
+		echo "Current setting: $P_WORLDTYPE"
+		read -p "Keep Current setting (y/n)? Enter for (y) :" KEEP
+		if [ -z "$KEEP" ]
+		then
+			KEEP=y
+		elif [ $KEEP = y ]
+		then
+			KEEP=y
+		elif [ $KEEP = n ]
+		then
+			KEEP=n
+		fi
+		if [ $KEEP = y ]
+		then
+			echo "worldtype: $P_WORLDTYPE" >> /usr/local/stationeers/config
+		else
+			Q3_Worldtype
+		fi
+
+		echo ""
+		echo "-------- Servername ----------"
+		echo ""
+		echo "Current setting: $P_SERVERNAME"
+		read -p "Keep Current setting (y/n)? Enter for (y) :" KEEP
+		if [ -z "$KEEP" ]
+		then
+			KEEP=y
+		elif [ $KEEP = y ]
+		then
+			KEEP=y
+		elif [ $KEEP = n ]
+		then
+			KEEP=n
+		fi
+		if [ $KEEP = y ]
+		then
+			echo "servername: $P_SERVERNAME" >> /usr/local/stationeers/config
+		else
+			Q4_Servername
+		fi
+
+		echo ""
+		echo "-------- Secure ----------"
+		echo ""
+		echo "Current setting: $P_SECURE"
+		read -p "Keep Current setting (y/n)? Enter for (y) :" KEEP
+		if [ -z "$KEEP" ]
+		then
+			KEEP=y
+		elif [ $KEEP = y ]
+		then
+			KEEP=y
+		elif [ $KEEP = n ]
+		then
+			KEEP=n
+		fi
+		if [ $KEEP = y ]
+		then
+			echo "secure: $P_SECURE" >> /usr/local/stationeers/config
+			echo "password: $P_PASSWORD" >> /usr/local/stationeers/config
+		else
+			Q5_Secure
+		fi
+	fi
 fi
+
 
 
 
@@ -115,10 +268,10 @@ fi
 #read -p "Game Mode (1,2): " GAMEMODE
 #if [ $GAMEMODE = 1 ]
 #then
-#	echo "gamemode: Survival" >> ~/Steam/st600760/config
+#	echo "gamemode: Survival" >> /usr/local/stationeers/config
 #elif [ $GAMEMODE = 2 ]
 #then
-#	echo "gamemode: Creative" >> ~/Steam/st600760/config
+#	echo "gamemode: Creative" >> /usr/local/stationeers/config
 #fi
 
 
@@ -126,8 +279,7 @@ fi
 # -------------
 echo ""
 echo "----------------------------------------------"
-cat ~/Steam/st600760/config
-echo ""
+cat /usr/local/stationeers/config
 echo "----------------------------------------------"
 echo ""
 

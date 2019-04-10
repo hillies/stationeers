@@ -27,7 +27,7 @@ see https://developer.valvesoftware.com/wiki/SteamCMD for more help
 * only tested on Fedora 27, but should work on other distros
  
 #### Step 2.1: Create steam directory
-`mkdir ~/Steam && cd ~/Steam`
+`mkdir /usr/local/SteamCMD && cd /usr/local/SteamCMD`
 
 #### Step 2.2: Download steamcmd and extract (steamcmd will be installed at Step 4.2)
 `curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -`
@@ -38,15 +38,17 @@ see https://developer.valvesoftware.com/wiki/SteamCMD for more help
 * only tested on Fedora 27, but should work on other distros
 
 #### Step 3.1: Download st600760.git
-`git clone https://github.com/hillies/st600760.git`
+`cd /usr/local && git clone https://github.com/hillies/stationeers.git`
 
+
+change from here
 
 
 ### Part 4: Stationeers Server
 * only tested on Fedora 27, but should work on other distros
 
 #### Step 4.1: Create server config file
-`~/Steam/st600760/create`
+`/usr/local/stationeers/create`
 
 #### Step 4.2: Install Steamcmd and Stationeers 
 `~/Steam/st600760/update`
