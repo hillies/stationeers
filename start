@@ -32,6 +32,8 @@ then
         -autostart \
         -batchmode \
         -nographics \
+        -updateport=27015 \
+        -gameport=27016 \
         -password=$PASSWORD \
         -autosaveinterval=300 \
         -clearallinterval=65535 \
@@ -39,7 +41,6 @@ then
         -worldtype=$WORLDTYPE \
         -worldname=$WORLDNAME \
         -servername=$SERVERNAME \
-        -basedirectory=server/ \
         &
 
 elif [ $SECURE = no ]
@@ -57,16 +58,14 @@ then
         -autostart \
         -batchmode \
         -nographics \
-        -autostart \
-        -updateport 27015 \
-        -gameport 27016 \
+        -updateport=27015 \
+        -gameport=27016 \
         -autosaveinterval=300 \
         -clearallinterval=65535 \
         -loadworld=$WORLDNAME \
         -worldtype=$WORLDTYPE \
         -worldname=$WORLDNAME \
         -servername=$SERVERNAME \
-        -basedirectory=server/ \
         &
 else
         echo "ERROR"
