@@ -28,7 +28,7 @@ then
 	echo
 	echo "------------------------------------------"
 
-	~/Steam/steamapps/common/Stationeers\ Dedicated\ Server/rocketstation_DedicatedServer.x86_64 \
+	/usr/local/steamgame_600760/rocketstation_DedicatedServer.x86_64 \
         -autostart \
         -batchmode \
         -nographics \
@@ -53,7 +53,7 @@ then
 	echo
 	echo "------------------------------------------"
 
-	~/Steam/steamapps/common/Stationeers\ Dedicated\ Server/rocketstation_DedicatedServer.x86_64 \
+	/usr/local/steamgame_600760/rocketstation_DedicatedServer.x86_64 \
         -autostart \
         -batchmode \
         -nographics \
